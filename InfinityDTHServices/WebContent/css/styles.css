@@ -1,0 +1,35 @@
+body {
+  	padding-top: 70px;
+}
+
+
+<!-- spaccing Search Bar --!>
+#searchBar {
+    margin-top: 2cm;
+}
+
+<!-- STB management page --!>
+@media (min-width: @screen-sm-min) {
+
+    .form-inline > .checkbox {margin-left:5px;margin-right:5px;}
+    .form-inline  .form-control {width:auto;}
+    .form-inline label {margin-right:5px;}
+
+}
+
+<!-- Landing Page -->
+.jumbotron {
+    padding: 10em 0.6em;
+    
+    
+}
+
+.entry:not(:first-of-type)
+{
+    margin-top: 10px;
+}
+
+.glyphicon
+{
+    font-size: 12px;
+}
