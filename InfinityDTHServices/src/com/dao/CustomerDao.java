@@ -34,7 +34,7 @@ public class CustomerDao extends GenericDao implements ICustomerDao {
 	@Override
 	public Integer addCustomer(Customer customer) throws SQLException, ClassNotFoundException {
 		
-		Integer userId = addNewUser(customer, User.CUSTOMER);
+		Integer customerId = addNewUser(customer, User.CUSTOMER);
 		
 		con = DBConnection.getConnectionTest();
 		
@@ -42,13 +42,14 @@ public class CustomerDao extends GenericDao implements ICustomerDao {
 		
 		Integer addressId = addressDao.addAddress(customer.getAddress());
 		
-		String sql = "INSERT INTO CUSTOMER VALUES(?,?,?,?,?,?)";
+//		String sql = "INSERT INTO CUSTOMER VALUES(?,?,?,?,?,?)";
+		String sql = "INSERT INTO CUSTOMERTEST VALUES(?,?,?,?,?,?)";
 		
 		logger.info(sql);
 		
 		ps = con.prepareStatement(sql);
 		
-		ps.setInt(1, userId);
+		ps.setInt(1, customerId);
 		ps.setString(2,customer.getFirstName());
 		ps.setString(3,customer.getLastName());
 		ps.setString(4,customer.getEmailAddress());
@@ -72,7 +73,7 @@ public class CustomerDao extends GenericDao implements ICustomerDao {
 		DBConnection.CloseConnection(con);
 		
 //		return -1;
-		return userId;
+		return customerId;
 	}
 
 	@Override
@@ -85,13 +86,14 @@ public class CustomerDao extends GenericDao implements ICustomerDao {
 		
 		// Prepare SQL statement
 		try {
-			ps = con.prepareStatement("select * from Customer");
+//			ps = con.prepareStatement("select * from Customer");
+			ps = con.prepareStatement("select * from CUSTOMERTEST");
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
 				Customer customer = new Customer();
 				
-				customer.setUserId(rs.getInt("userId"));
+				customer.setUserId(rs.getInt("customerId"));
 				customer.setFirstName(rs.getString("firstName"));
 				customer.setLastName(rs.getString("lastName"));
 				customer.setPhoneNumber(rs.getString("phonenumber"));
@@ -122,7 +124,8 @@ public class CustomerDao extends GenericDao implements ICustomerDao {
 		con = DBConnection.getConnection();
 		
 		try {
-			ps = con.prepareStatement("select * from Customer where firstname= "+"'"+customerName+"'");
+//			ps = con.prepareStatement("select * from Customer where firstname= "+"'"+customerName+"'");
+			ps = con.prepareStatement("select * from CUSTOMERTEST where firstname= "+"'"+customerName+"'");
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
@@ -144,7 +147,7 @@ public class CustomerDao extends GenericDao implements ICustomerDao {
 		return customers;
 	}
 	
-	public void updateCustomer(Customer customer,int userid){
+	public void updateCustomer(Customer customer,int customerId){
 
 		con = DBConnection.getConnection();
 //		String sql = "update customer set firstname= "+"'"+customer.getFirstName()+"'"
@@ -153,10 +156,11 @@ public class CustomerDao extends GenericDao implements ICustomerDao {
 //				     "emailid= "+"'"+customer.getEmailAddress()+"'";
 		
 		System.out.println("firstname= "+customer.getFirstName());
-		String sql = "update customer set firstname= "+"'"+customer.getFirstName()+"'"+
-					 " where userid="+userid;
+//		String sql = "update customer set firstname= "+"'"+customer.getFirstName()+"'"+
+//					 " where customerId="+customerId;
+		String sql = "update CUSTOMERTEST set firstname= "+"'"+customer.getFirstName()+"'"+
+				 " where customerId="+customerId;
 		
-//		System.out.println(customerid);
 		System.out.println(sql);
 		try {
 
@@ -167,13 +171,14 @@ public class CustomerDao extends GenericDao implements ICustomerDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("end");
+		System.out.println("update end");
 	}
 	
 	public void deleteCustomer(int customerid){
 
 		con = DBConnection.getConnection();
-		String sql = "delete from customer where customerid= "+customerid;
+//		String sql = "delete from customer where customerid= "+customerid;
+		String sql = "delete from CUSTOMERTEST where customerid= "+customerid;
 		
 //		System.out.println(customerid);
 		System.out.println(sql);
@@ -186,7 +191,7 @@ public class CustomerDao extends GenericDao implements ICustomerDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("end");
+		System.out.println("deleteCustomer end");
 	}
 }
 

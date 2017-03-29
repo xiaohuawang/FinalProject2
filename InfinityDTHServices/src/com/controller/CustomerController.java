@@ -58,8 +58,8 @@ public class CustomerController extends HttpServlet {
 //
 //				request.getRequestDispatcher("update.jsp").forward(request, response);
 
-//				request.getRequestDispatcher("viewCustomers.jsp").forward(request, response);
-				request.getRequestDispatcher("SearchAndDisplay.jsp").forward(request, response);
+				request.getRequestDispatcher("viewCustomers.jsp").forward(request, response);
+//				request.getRequestDispatcher("SearchAndDisplay.jsp").forward(request, response);
 				
 			} catch (ClassNotFoundException | SQLException e) {
 				logger.error(e.getMessage());
@@ -96,9 +96,9 @@ public class CustomerController extends HttpServlet {
 
 //				request.getRequestDispatcher("searchCustomer.jsp").forward(request, response);
 //
-//				request.getRequestDispatcher("viewCustomers.jsp").forward(request, response);
+				request.getRequestDispatcher("viewCustomers.jsp").forward(request, response);
 
-				request.getRequestDispatcher("displayCustomer.jsp").forward(request, response);
+//				request.getRequestDispatcher("displayCustomer.jsp").forward(request, response);
 				
 			} catch (ClassNotFoundException | SQLException e) {
 				logger.error(e.getMessage());

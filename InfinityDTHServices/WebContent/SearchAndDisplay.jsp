@@ -13,10 +13,10 @@
       <div class="col-lg-6">
          <div class="input-group">
          	 <div>
-		  		<a href="customer?action=getAllCustomers"><h2>get all customer</h2></a>
+		  		<a href="TestServlet?action=getAllCustomers"><h2>get all customer</h2></a>
 		  	</div>
 		  	 <div>
-		  		<a href="customer?action=getCustomerByName"><h2>get customer by name</h2></a>
+		  		<a href="TestServlet?action=getCustomerByName"><h2>get customer by name</h2></a>
 		  	</div>
 		  	 <div>
 		  		<a href="TestServlet"><h2>TestServlet</h2></a>
@@ -44,8 +44,8 @@
 		      			Last Name
 		      		</li>
 		      		<li>
-			           	<a class="btn btn-sm btn-primary" href="TestServlet?id=${customer.userId}" role="button">Update</a>
-			            <a class="btn btn-sm btn-danger" href="TestServlet?id=${customer.userId}" role="button">Delete</a>
+				      	<a class="btn btn-sm btn-primary" href="TestServlet?action=update&id=${customer.userId}" role="button">Update</a>   	
+			            <a class="btn btn-sm btn-danger" href="TestServlet?action=delete&id=${customer.userId}" role="button">Delete</a>
 			        </li>
 		    		</ul>
 		  		</c:forEach>
